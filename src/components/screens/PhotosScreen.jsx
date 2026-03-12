@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const PHOTOS = [
   {
-    image: '/photoo.jpeg',
+    image: '/photoo.jpg',
     caption: 'The day we became best friends forever 💜',
     // fit: 'contain',          // override just for this photo
     // borderRadius: '50%',     // override just for this photo
@@ -19,7 +19,7 @@ const PHOTOS = [
     shadow: '0 0 20px black',
   },
   {
-    image: '/12.jpg',
+    image: '/prachii.jpg',
     caption: 'The girl who made every outing feel like a celebration 🌸',
     shadow: '0 0 20px ',
   },
