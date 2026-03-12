@@ -66,7 +66,7 @@ export default function PhotosScreen({ onNext }) {
   return (
     <motion.div
       className="fixed inset-0 flex flex-col items-center justify-center gap-3 px-4"
-      style={{ zIndex: 10 }}
+      style={{ zIndex: 10, willChange: 'transform' }}
       initial={{ opacity: 0, x: 60 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -60 }}
@@ -77,6 +77,7 @@ export default function PhotosScreen({ onNext }) {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         style={{
+          willChange: 'transform',
           fontFamily: 'Dancing Script, cursive',
           fontSize: 'clamp(1.5rem,6vw,2.8rem)',
           color: 'white',
@@ -108,6 +109,7 @@ export default function PhotosScreen({ onNext }) {
               gap: 10,
               padding: 'clamp(10px, 3vw, 16px)',
               overflow: 'hidden',
+              willChange: 'transform',
             }}
           >
             {/* Photo */}
@@ -151,7 +153,7 @@ export default function PhotosScreen({ onNext }) {
               scale: i === current ? 1.4 : 1,
               background: i === current ? '#a78bfa' : 'rgba(255,255,255,0.3)',
             }}
-            style={{ width: 10, height: 10, borderRadius: '50%', cursor: 'pointer' }}
+            style={{ width: 10, height: 10, borderRadius: '50%', cursor: 'pointer', willChange: 'transform' }}
           />
         ))}
       </div>
@@ -165,6 +167,7 @@ export default function PhotosScreen({ onNext }) {
             onClick={() => goTo((current + (i === 0 ? -1 : 1) + PHOTOS.length) % PHOTOS.length)}
             className="glass"
             style={{
+              willChange: 'transform',
               width: 40, height: 40, borderRadius: '50%',
               color: 'white', border: '1px solid rgba(255,255,255,0.25)',
               cursor: 'pointer', fontSize: '0.85rem', fontWeight: 700,
@@ -181,7 +184,7 @@ export default function PhotosScreen({ onNext }) {
         whileHover={{ scale: 1.05, y: -3 }}
         whileTap={{ scale: 0.97 }}
         onClick={onNext}
-        style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.6), rgba(6,182,212,0.6))' }}
+        style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.6), rgba(6,182,212,0.6))', willChange: 'transform' }}
       >
         {DEFAULTS.buttonText}
       </motion.button>

@@ -36,7 +36,7 @@ export default function ExperienceScreen({ onReplay }) {
   return (
     <motion.div
       className="fixed inset-0 flex flex-col items-center justify-center gap-4 px-4 screen-scroll"
-      style={{ zIndex: 10, paddingTop: 'clamp(24px, 4vh, 40px)', paddingBottom: 24 }}
+      style={{ zIndex: 10, paddingTop: 'clamp(24px, 4vh, 40px)', paddingBottom: 24, willChange: 'transform' }}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
@@ -46,9 +46,9 @@ export default function ExperienceScreen({ onReplay }) {
         {!submitted ? (
           <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 0.9 }}
             className="glass-strong flex flex-col items-center gap-4 text-center"
-            style={{ maxWidth: 400, width: '92%', padding: 'clamp(24px, 4vh, 36px) clamp(18px, 5vw, 28px)' }}>
+            style={{ maxWidth: 400, width: '92%', padding: 'clamp(24px, 4vh, 36px) clamp(18px, 5vw, 28px)', willChange: 'transform' }}>
 
-            <motion.div style={{ fontSize: 'clamp(1.8rem, 6vw, 2.5rem)' }}
+            <motion.div style={{ fontSize: 'clamp(1.8rem, 6vw, 2.5rem)', willChange: 'transform' }}
               animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
               💌
             </motion.div>
@@ -73,7 +73,7 @@ export default function ExperienceScreen({ onReplay }) {
                   onClick={() => setRating(s)}
                   whileHover={{ scale: 1.35 }}
                   whileTap={{ scale: 0.9 }}
-                  style={{
+                  style={{ willChange: 'transform',
                     background: 'none', border: 'none', cursor: 'pointer',
                     fontSize: 'clamp(1.5rem, 5vw, 2rem)', filter: s <= (hovered || rating) ? 'none' : 'grayscale(1) opacity(0.35)',
                     transition: 'filter 0.2s',
@@ -88,7 +88,7 @@ export default function ExperienceScreen({ onReplay }) {
               {(hovered > 0 || rating > 0) && (
                 <motion.div key={hovered || rating}
                   initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }}
-                  style={{ fontSize: 'clamp(1.8rem, 6vw, 2.5rem)' }}>
+                  style={{ fontSize: 'clamp(1.8rem, 6vw, 2.5rem)', willChange: 'transform' }}>
                   {REACTIONS[(hovered || rating) - 1]}
                 </motion.div>
               )}
@@ -115,7 +115,7 @@ export default function ExperienceScreen({ onReplay }) {
               whileHover={{ scale: rating > 0 ? 1.05 : 1 }}
               whileTap={{ scale: rating > 0 ? 0.96 : 1 }}
               onClick={handleSubmit}
-              style={{
+              style={{ willChange: 'transform',
                 padding: '12px 32px',
                 background: rating > 0
                   ? 'linear-gradient(135deg, rgba(139,92,246,0.65), rgba(6,182,212,0.65))'
@@ -138,10 +138,10 @@ export default function ExperienceScreen({ onReplay }) {
             initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
             transition={{ type: 'spring', stiffness: 180, damping: 16 }}
             className="glass-strong flex flex-col items-center gap-4 text-center"
-            style={{ maxWidth: 400, width: '92%', padding: 'clamp(28px, 5vh, 44px) clamp(18px, 5vw, 28px)' }}>
+            style={{ maxWidth: 400, width: '92%', padding: 'clamp(28px, 5vh, 44px) clamp(18px, 5vw, 28px)', willChange: 'transform' }}>
 
             <motion.div animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }} style={{ fontSize: 'clamp(2.5rem, 8vw, 3.5rem)' }}>
+              transition={{ duration: 1.5, repeat: Infinity }} style={{ fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', willChange: 'transform' }}>
               🥰
             </motion.div>
 
@@ -162,10 +162,10 @@ export default function ExperienceScreen({ onReplay }) {
             </p>
 
             <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.6 }}
-              style={{ width: '60%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.6), transparent)' }} />
+              style={{ width: '60%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.6), transparent)', willChange: 'transform' }} />
 
             <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} onClick={onReplay}
-              style={{
+              style={{ willChange: 'transform',
                 padding: '11px 28px', background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)',
                 border: '1px solid rgba(255,255,255,0.25)', borderRadius: 50, color: 'white',
                 fontFamily: 'Quicksand, sans-serif', fontSize: 'clamp(0.85rem, 2.8vw, 0.95rem)', fontWeight: 700, cursor: 'pointer',

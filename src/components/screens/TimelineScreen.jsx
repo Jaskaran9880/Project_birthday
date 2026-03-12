@@ -17,7 +17,7 @@ export default function TimelineScreen({ onNext }) {
   return (
     <motion.div
       className="fixed inset-0 flex flex-col items-center justify-start gap-4 px-4 screen-scroll"
-      style={{ zIndex: 10, paddingTop: 'clamp(36px, 7vh, 72px)', paddingBottom: 24 }}
+      style={{ zIndex: 10, paddingTop: 'clamp(36px, 7vh, 72px)', paddingBottom: 24, willChange: 'transform' }}
       initial={{ opacity: 0, x: 80 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -80 }}
@@ -26,7 +26,7 @@ export default function TimelineScreen({ onNext }) {
       <motion.h2 initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
         style={{
           fontFamily: 'Dancing Script, cursive', fontSize: 'clamp(1.5rem,5.5vw,2.6rem)',
-          color: 'white', textShadow: '0 2px 20px rgba(139,92,246,0.7)', textAlign: 'center', flexShrink: 0
+          color: 'white', textShadow: '0 2px 20px rgba(139,92,246,0.7)', textAlign: 'center', flexShrink: 0, willChange: 'transform'
         }}>
         Our Friendship Story 🌙
       </motion.h2>
@@ -41,7 +41,7 @@ export default function TimelineScreen({ onNext }) {
           style={{
             position: 'absolute', left: 'clamp(18px, 5vw, 28px)', top: 0, bottom: 0, width: 2,
             background: 'linear-gradient(180deg, rgba(139,92,246,0.8), rgba(6,182,212,0.8))',
-            transformOrigin: 'top',
+            transformOrigin: 'top', willChange: 'transform'
           }}
         />
 
@@ -51,7 +51,7 @@ export default function TimelineScreen({ onNext }) {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ type: 'spring', stiffness: 200, damping: 18, delay: i * 0.05 }}
-              style={{ display: 'flex', alignItems: 'flex-start', gap: 'clamp(8px, 2.5vw, 14px)' }}>
+              style={{ display: 'flex', alignItems: 'flex-start', gap: 'clamp(8px, 2.5vw, 14px)', willChange: 'transform' }}>
               {/* Dot */}
               <div style={{
                 minWidth: 'clamp(28px, 7vw, 34px)', height: 'clamp(28px, 7vw, 34px)', borderRadius: '50%', zIndex: 2,
@@ -79,7 +79,7 @@ export default function TimelineScreen({ onNext }) {
             padding: '11px 28px', background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)',
             border: '1px solid rgba(255,255,255,0.25)', borderRadius: 50, color: 'white',
             fontFamily: 'Quicksand, sans-serif', fontSize: 'clamp(0.82rem, 2.8vw, 0.9rem)', fontWeight: 700, cursor: 'pointer',
-            flexShrink: 0,
+            flexShrink: 0, willChange: 'transform'
           }}>
           Continue the story ➜
         </motion.button>
@@ -90,7 +90,7 @@ export default function TimelineScreen({ onNext }) {
             padding: '12px 32px', background: 'linear-gradient(135deg, rgba(139,92,246,0.65), rgba(6,182,212,0.65))',
             backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: 50,
             color: 'white', fontFamily: 'Quicksand, sans-serif', fontSize: 'clamp(0.9rem, 3vw, 1rem)', fontWeight: 700, cursor: 'pointer',
-            boxShadow: '0 6px 24px rgba(139,92,246,0.35)', flexShrink: 0,
+            boxShadow: '0 6px 24px rgba(139,92,246,0.35)', flexShrink: 0, willChange: 'transform'
           }}>
           🎉 Let's Celebrate!
         </motion.button>

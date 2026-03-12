@@ -31,7 +31,7 @@ export default function LoaderScreen({ onDone }) {
   return (
     <motion.div
       className="fixed inset-0 flex flex-col items-center justify-center gap-8 px-4"
-      style={{ zIndex: 10 }}
+      style={{ zIndex: 10, willChange: 'transform' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.05 }}
@@ -43,7 +43,7 @@ export default function LoaderScreen({ onDone }) {
         {/* Candle */}
         <div className="flex flex-col items-center gap-1">
           <motion.div
-            style={{
+            style={{ willChange: 'transform',
               width: 16, height: 28, borderRadius: '50%',
               background: 'radial-gradient(ellipse at 50% 80%, #fbbf24, #f97316, transparent)',
               filter: 'blur(1px)',
@@ -68,6 +68,7 @@ export default function LoaderScreen({ onDone }) {
               exit={{ scale: 1.5, opacity: 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 15 }}
               style={{
+                willChange: 'transform',
                 fontFamily: 'Pacifico, cursive',
                 fontSize: 'clamp(4rem,16vw,8rem)',
                 color: 'white',
@@ -85,7 +86,7 @@ export default function LoaderScreen({ onDone }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ type: 'spring', stiffness: 260, damping: 12 }}
-              style={{ fontSize: 'clamp(3.5rem,14vw,7rem)' }}
+              style={{ fontSize: 'clamp(3.5rem,14vw,7rem)', willChange: 'transform' }}
             >
               🎉
             </motion.div>

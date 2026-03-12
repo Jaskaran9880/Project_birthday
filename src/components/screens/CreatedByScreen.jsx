@@ -13,14 +13,14 @@ export default function CreatedByScreen({ onDone }) {
   return (
     <motion.div
       className="fixed inset-0 flex flex-col items-center justify-center gap-6 px-4"
-      style={{ zIndex: 10 }}
+      style={{ zIndex: 10, willChange: 'transform' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.04 }}
       transition={{ duration: 0.7 }}
     >
       {[...Array(14)].map((_, i) => (
-        <motion.div key={i} style={{
+        <motion.div key={i} style={{ willChange: 'transform',
           position: 'absolute', width: i % 3 === 0 ? 6 : 4, height: i % 3 === 0 ? 6 : 4,
           borderRadius: '50%', background: i % 2 === 0 ? 'rgba(167,139,250,0.7)' : 'rgba(6,182,212,0.7)',
           left: `${5 + i * 6.5}%`, top: `${15 + (i % 4) * 20}%`,
@@ -39,6 +39,7 @@ export default function CreatedByScreen({ onDone }) {
           animate={{ scale: IMAGE_ZOOM, rotate: 0 }}
           transition={{ type: 'spring', stiffness: 200, damping: 14, delay: 0.2 }}
           style={{
+            willChange: 'transform',
             width: 'clamp(72px, 20vw, 100px)',
             height: 'clamp(72px, 20vw, 100px)',
             borderRadius: '10%',
@@ -50,13 +51,13 @@ export default function CreatedByScreen({ onDone }) {
         <br></br>
 
         <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-          style={{ color: 'rgba(244, 244, 244, 1)', fontSize: '0.72rem', letterSpacing: '0.22em', fontWeight: 700, textTransform: 'uppercase', textShadow: '0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255,215,0,0.3)' }}>
+          style={{ color: 'rgba(244, 244, 244, 1)', fontSize: '0.72rem', letterSpacing: '0.22em', fontWeight: 700, textTransform: 'uppercase', textShadow: '0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255,215,0,0.3)', willChange: 'transform' }}>
           Created by
         </motion.p>
 
         <motion.h1 initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ type: 'spring', stiffness: 180, damping: 14, delay: 0.55 }}
-          style={{
+          style={{ willChange: 'transform',
             fontFamily: 'Pacifico, cursive', fontSize: 'clamp(1.6rem,7vw,3rem)', color: 'white',
             textShadow: '0 0 30px rgba(167,139,250,0.8), 0 0 60px rgba(139,92,246,0.4)', lineHeight: 1.2,
           }}>
@@ -64,10 +65,10 @@ export default function CreatedByScreen({ onDone }) {
         </motion.h1>
 
         <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.75, duration: 0.6 }}
-          style={{ width: '60%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.6), rgba(6,182,212,0.6), transparent)' }} />
+          style={{ width: '60%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.6), rgba(6,182,212,0.6), transparent)', willChange: 'transform' }} />
 
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}
-          style={{ fontFamily: 'Dancing Script, cursive', fontSize: 'clamp(1rem,4vw,1.25rem)', color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>
+          style={{ fontFamily: 'Dancing Script, cursive', fontSize: 'clamp(1rem,4vw,1.25rem)', color: 'rgba(255,255,255,0.7)', lineHeight: 1.5, willChange: 'transform' }}>
           A little surprise, made just for you ✨
         </motion.p>
 
@@ -76,6 +77,7 @@ export default function CreatedByScreen({ onDone }) {
           whileHover={{ scale: 1.06, y: -3 }} whileTap={{ scale: 0.96 }}
           onClick={onDone}
           style={{
+            willChange: 'transform',
             marginTop: 8, padding: '13px 36px',
             background: 'linear-gradient(135deg, rgba(139,92,246,0.65), rgba(6,182,212,0.65))',
             backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.3)',

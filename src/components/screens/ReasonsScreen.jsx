@@ -22,7 +22,7 @@ export default function ReasonsScreen({ onNext }) {
   return (
     <motion.div
       className="fixed inset-0 flex flex-col items-center justify-start gap-3 px-4 screen-scroll"
-      style={{ zIndex: 10, paddingTop: 'clamp(40px, 8vh, 80px)', paddingBottom: 24 }}
+      style={{ zIndex: 10, paddingTop: 'clamp(40px, 8vh, 80px)', paddingBottom: 24, willChange: 'transform' }}
       initial={{ opacity: 0, x: 80 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -80 }}
@@ -31,7 +31,7 @@ export default function ReasonsScreen({ onNext }) {
       <motion.h2 initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
         style={{
           fontFamily: 'Dancing Script, cursive', fontSize: 'clamp(1.4rem,5.5vw,2.6rem)', color: 'white',
-          textShadow: '0 2px 20px rgba(139,92,246,0.7)', textAlign: 'center', flexShrink: 0
+          textShadow: '0 2px 20px rgba(139,92,246,0.7)', textAlign: 'center', flexShrink: 0, willChange: 'transform'
         }}>
         {REASONS.length} Reasons You're My Favorite Headache 🤕
       </motion.h2>
@@ -44,7 +44,7 @@ export default function ReasonsScreen({ onNext }) {
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ type: 'spring', stiffness: 200, damping: 18 }}
               className="glass"
-              style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 'clamp(10px, 2vw, 13px) clamp(12px, 3vw, 18px)' }}>
+              style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 'clamp(10px, 2vw, 13px) clamp(12px, 3vw, 18px)', willChange: 'transform' }}>
               <span style={{ fontSize: 'clamp(1.2rem, 4vw, 1.6rem)', minWidth: 28 }}>{r.emoji}</span>
               <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: 'clamp(0.78rem, 2.8vw, 0.9rem)', fontWeight: 600, lineHeight: 1.4 }}>{r.text}</p>
             </motion.div>
@@ -58,7 +58,7 @@ export default function ReasonsScreen({ onNext }) {
             padding: '11px 28px', background: 'linear-gradient(135deg, rgba(139,92,246,0.6), rgba(6,182,212,0.6))',
             backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.28)', borderRadius: 50,
             color: 'white', fontFamily: 'Quicksand, sans-serif', fontSize: 'clamp(0.85rem, 2.8vw, 0.95rem)', fontWeight: 700, cursor: 'pointer',
-            flexShrink: 0,
+            flexShrink: 0, willChange: 'transform'
           }}>
           {revealed === 0 ? '✨ Reveal Reasons' : `Next Reason (${revealed}/${REASONS.length})`}
         </motion.button>
@@ -69,7 +69,7 @@ export default function ReasonsScreen({ onNext }) {
             padding: '12px 32px', background: 'linear-gradient(135deg, rgba(139,92,246,0.65), rgba(6,182,212,0.65))',
             backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: 50,
             color: 'white', fontFamily: 'Quicksand, sans-serif', fontSize: 'clamp(0.9rem, 3vw, 1rem)', fontWeight: 700, cursor: 'pointer',
-            boxShadow: '0 6px 24px rgba(139,92,246,0.35)', flexShrink: 0,
+            boxShadow: '0 6px 24px rgba(139,92,246,0.35)', flexShrink: 0, willChange: 'transform'
           }}>
           Let's Move Ahead 😎
         </motion.button>

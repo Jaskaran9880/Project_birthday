@@ -9,7 +9,7 @@ export default function MessageScreen({ onNext }) {
   return (
     <motion.div
       className="fixed inset-0 flex flex-col items-center justify-center gap-5 px-4"
-      style={{ zIndex: 10 }}
+      style={{ zIndex: 10, willChange: 'transform' }}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
@@ -20,6 +20,7 @@ export default function MessageScreen({ onNext }) {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
         style={{
+          willChange: 'transform',
           fontFamily: 'Dancing Script, cursive',
           fontSize: 'clamp(1.5rem,6vw,2.8rem)',
           color: 'white',
@@ -38,13 +39,11 @@ export default function MessageScreen({ onNext }) {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.4, opacity: 0 }}
             onClick={() => setOpened(true)}
-            className="glass-strong flex flex-col items-center gap-3"
-            style={{ cursor: 'pointer', textAlign: 'center', padding: 'clamp(20px, 5vw, 32px) clamp(28px, 8vw, 48px)' }}
+            style={{ cursor: 'pointer', textAlign: 'center', padding: 'clamp(20px, 5vw, 32px) clamp(28px, 8vw, 48px)', willChange: 'transform' }}
           >
             <motion.div
               animate={{ scale: [1, 1.08, 1], rotate: [-3, 3, -3] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              style={{ fontSize: 'clamp(2.5rem,10vw,5rem)' }}
+              style={{ fontSize: 'clamp(2.5rem,10vw,5rem)', willChange: 'transform' }}
             >
               💌
             </motion.div>
@@ -59,13 +58,12 @@ export default function MessageScreen({ onNext }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: 'spring', stiffness: 200, damping: 18 }}
             className="glass-strong"
-            style={{ maxWidth: 380, width: '92%', padding: 'clamp(20px, 4vw, 28px) clamp(18px, 4vw, 24px)', textAlign: 'center' }}
+            style={{ maxWidth: 380, width: '92%', padding: 'clamp(20px, 4vw, 28px) clamp(18px, 4vw, 24px)', textAlign: 'center', willChange: 'transform' }}
           >
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: [0, 1.5, 1] }}
-              transition={{ duration: 0.5 }}
-              style={{ fontSize: '2rem', marginBottom: 12 }}
+              style={{ fontSize: '2rem', marginBottom: 12, willChange: 'transform' }}
             >🎉</motion.div>
             <p style={{
               fontFamily: 'Dancing Script, cursive',
@@ -93,8 +91,8 @@ export default function MessageScreen({ onNext }) {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
         whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.97 }}
         onClick={onNext}
+        style={{ willChange: 'transform' }}
       >
         Continue 💜
       </motion.button>

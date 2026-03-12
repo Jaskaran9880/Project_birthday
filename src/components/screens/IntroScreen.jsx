@@ -28,7 +28,7 @@ export default function IntroScreen({ onStart }) {
   return (
     <motion.div
       className="fixed inset-0 flex flex-col items-center justify-center gap-4 px-4"
-      style={{ zIndex: 10 }}
+      style={{ zIndex: 10, willChange: 'transform' }}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.04 }}
@@ -43,7 +43,7 @@ export default function IntroScreen({ onStart }) {
         { bottom: '20%', left: '10%', delay: 1 },
         { bottom: '18%', right: '8%', delay: 1.5 },
       ].map((s, i) => (
-        <motion.span key={i} className="absolute text-xl pointer-events-none" style={{ ...s, zIndex: 1 }}
+        <motion.span key={i} className="absolute text-xl pointer-events-none" style={{ ...s, zIndex: 1, willChange: 'transform' }}
           animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.3, 0.8] }}
           transition={{ duration: 2.2, repeat: Infinity, delay: s.delay }}
         >✨</motion.span>
@@ -56,7 +56,7 @@ export default function IntroScreen({ onStart }) {
           padding: 'clamp(24px, 4vh, 40px) clamp(20px, 5vw, 40px)',
         }}>
         <motion.div
-          style={{ fontSize: 'clamp(2.8rem,11vw,6rem)' }}
+          style={{ fontSize: 'clamp(2.8rem,11vw,6rem)', willChange: 'transform' }}
           animate={{ y: [0, -12, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
@@ -68,6 +68,7 @@ export default function IntroScreen({ onStart }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           style={{
+            willChange: 'transform',
             fontFamily: 'Pacifico, cursive',
             fontSize: 'clamp(1.2rem,4.5vw,2.4rem)',
             color: 'white',
@@ -82,7 +83,7 @@ export default function IntroScreen({ onStart }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          style={{ color: 'rgba(255,255,255,0.65)', fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)' }}
+          style={{ color: 'rgba(255,255,255,0.65)', fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)', willChange: 'transform' }}
         >
           Yes, it&apos;s YOU! A little surprise awaits...
         </motion.p>
@@ -96,6 +97,7 @@ export default function IntroScreen({ onStart }) {
           whileTap={{ scale: 0.97 }}
           onClick={onStart}
           style={{
+            willChange: 'transform',
             background: 'linear-gradient(135deg, rgba(139,92,246,0.6), rgba(6,182,212,0.6))',
             border: '1px solid rgba(255,255,255,0.3)',
             marginTop: 4,
