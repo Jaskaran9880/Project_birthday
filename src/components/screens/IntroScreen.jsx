@@ -16,12 +16,12 @@ export default function IntroScreen({ onStart }) {
       el.textContent = FLOATERS[Math.floor(Math.random() * FLOATERS.length)]
       el.style.cssText = `
         position:absolute; bottom:-60px; font-size:${0.9 + Math.random() * 1}rem;
-        left:${Math.random() * 100}vw; pointer-events:none; opacity:0.6;
+        left:${Math.random() * 100}vw; pointer-events:none; opacity:0.6; will-change: transform;
         animation: floatUp ${6 + Math.random() * 4}s linear forwards;
       `
       container.appendChild(el)
       setTimeout(() => el.remove(), 12000)
-    }, 700)
+    }, 1200)
     return () => clearInterval(id)
   }, [])
 

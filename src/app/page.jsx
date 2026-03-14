@@ -23,13 +23,17 @@ const HIDE_REPLAY = ['createdby', 'loader']
 export default function Home() {
   const [screen, setScreen] = useState('createdby')
   const [showPrompt, setShowPrompt] = useState(true)
+  const [playMusic, setPlayMusic] = useState(false)
 
-  const replay = () => setScreen('createdby')
+  const replay = () => {
+    setScreen('createdby')
+    setPlayMusic(true)
+  }
 
   return (
     <main className="relative w-screen overflow-hidden" style={{ height: '100dvh' }}>
       <Orbs />
-      <MusicButton />
+      <MusicButton play={playMusic} />
       {!HIDE_REPLAY.includes(screen) && <ReplayButton onReplay={replay} />}
 
       <AnimatePresence mode="wait">
@@ -44,7 +48,7 @@ export default function Home() {
         {screen === 'message' && <MessageScreen key="message" onNext={() => setScreen('experience')} />}
         {screen === 'experience' && <ExperienceScreen key="experience" onReplay={replay} />}
       </AnimatePresence>
-      {showPrompt && <MusicPrompt onDone={() => setShowPrompt(false)} />}
+      {showPrompt && <MusicPrompt onDone={(shouldPlay) => { setShowPrompt(false); if (shouldPlay) setPlayMusic(true) }} />}
     </main>
   )
 }

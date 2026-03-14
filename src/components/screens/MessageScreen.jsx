@@ -42,7 +42,7 @@ export default function MessageScreen({ onNext }) {
             style={{ cursor: 'pointer', textAlign: 'center', padding: 'clamp(20px, 5vw, 32px) clamp(28px, 8vw, 48px)', willChange: 'transform' }}
           >
             <motion.div
-              animate={{ scale: [1, 1.08, 1], rotate: [-3, 3, -3] }}
+              animate={{ scale: [1, 1.08, 1] }}
               style={{ fontSize: 'clamp(2.5rem,10vw,5rem)', willChange: 'transform' }}
             >
               💌

@@ -16,22 +16,22 @@ const PHOTOS = [
     // fit: 'contain',          // override just for this photo
     // borderRadius: '50%',     // override just for this photo
     // border: '3px solid gold',
-    shadow: '0 0 20px black',
+    shadow: '0 0 40px black',
   },
   {
-    image: '/prachii.jpg',
+    image: '/prachii.webp',
     caption: 'The girl who made every outing feel like a celebration 🌸',
-    shadow: '0 0 20px ',
+    shadow: '0 0 20px gold',
   },
   {
-    image: '/snap12.jpg',
+    image: '/black_p.webp',
     caption: 'Miles away but never far from my mind 💜',
     shadow: '0 0 20px gold',
   },
   {
-    image: '/25.jpg',
+    image: '/new pra.webp',
     caption: 'Happy birthday to the most beautiful soul I know ✨',
-    shadow: '0 0 20px gold',
+    shadow: '0 0 40px ',
   },
 ]
 
@@ -97,8 +97,8 @@ export default function PhotosScreen({ onNext }) {
         <AnimatePresence mode="wait" custom={dir}>
           <motion.div
             key={current}
-            initial={{ opacity: 0, x: dir * 80, rotate: dir * 5 }}
-            animate={{ opacity: 1, x: 0, rotate: 0 }}
+            initial={{ opacity: 0, x: dir * 80 }}
+            animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: dir * -80 }}
             transition={{ duration: 0.4 }}
             className="glass-strong"

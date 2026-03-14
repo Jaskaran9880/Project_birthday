@@ -47,7 +47,7 @@ export default function MusicPrompt({ onDone }) {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%' }}>
             {[
-              { emoji: '🎵', text: 'Turn your music ON' },
+              { emoji: '🎵', text: 'Enhanced with music.' },
               { emoji: '📱', text: 'Increase your volume to max' },
               { emoji: '🎧', text: 'The Button is located in the top right corner' },
             ].map((item, i) => (
@@ -65,7 +65,7 @@ export default function MusicPrompt({ onDone }) {
 
           <motion.button
             whileHover={{ scale: 1.06, y: -3 }} whileTap={{ scale: 0.96 }}
-            onClick={onDone}
+            onClick={() => onDone(true)}
             style={{
               marginTop: 6, width: '100%', padding: '14px 0',
               background: 'linear-gradient(135deg, rgba(139,92,246,0.75), rgba(6,182,212,0.75))',
@@ -74,9 +74,9 @@ export default function MusicPrompt({ onDone }) {
               fontSize: '1rem', fontWeight: 700, cursor: 'pointer',
               boxShadow: '0 6px 28px rgba(139,92,246,0.4)',
             }}
-          >I'm Ready! Let's Go 🚀</motion.button>
+          >Volume Increased? Let's Start! 🚀</motion.button>
 
-          <button onClick={onDone} style={{
+          <button onClick={() => onDone(false)} style={{
             background: 'none', border: 'none',
             color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem',
             cursor: 'pointer', textDecoration: 'underline',

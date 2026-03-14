@@ -37,7 +37,7 @@ export default function WishesScreen({ onNext }) {
             className="glass"
             style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 'clamp(10px, 2vw, 13px) clamp(12px, 3vw, 18px)', willChange: 'transform' }}>
             <motion.span
-              animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
+              animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity, delay: i * 0.4 }}
               style={{ fontSize: 'clamp(1.2rem, 4vw, 1.6rem)', minWidth: 28, willChange: 'transform' }}>{w.emoji}</motion.span>
             <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: 'clamp(0.78rem, 2.8vw, 0.9rem)', fontWeight: 600, lineHeight: 1.4 }}>{w.text}</p>

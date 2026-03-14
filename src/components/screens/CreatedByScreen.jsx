@@ -25,7 +25,7 @@ export default function CreatedByScreen({ onDone }) {
           borderRadius: '50%', background: i % 2 === 0 ? 'rgba(167,139,250,0.7)' : 'rgba(6,182,212,0.7)',
           left: `${5 + i * 6.5}%`, top: `${15 + (i % 4) * 20}%`,
         }}
-          animate={{ y: [-12, 12, -12], opacity: [0.2, 1, 0.2], scale: [0.8, 1.5, 0.8] }}
+          animate={{ y: [-12, 12, -12], opacity: [0.2, 1, 0.2] }}
           transition={{ duration: 2.5 + i * 0.25, repeat: Infinity, delay: i * 0.18 }}
         />
       ))}
@@ -34,9 +34,9 @@ export default function CreatedByScreen({ onDone }) {
         style={{ padding: 'clamp(28px, 6vw, 52px) clamp(24px, 5vw, 56px)', maxWidth: 400, width: '92%' }}>
 
         <motion.img
-          src="/jass.jpg"
-          initial={{ scale: 0, rotate: -20 }}
-          animate={{ scale: IMAGE_ZOOM, rotate: 0 }}
+          src="/jass.webp"
+          initial={{ scale: 0, rotate: -0 }}
+          animate={{ scale: IMAGE_ZOOM }}
           transition={{ type: 'spring', stiffness: 200, damping: 14, delay: 0.2 }}
           style={{
             willChange: 'transform',

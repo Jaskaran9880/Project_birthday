@@ -41,7 +41,7 @@ export default function ReasonsScreen({ onNext }) {
           {REASONS.slice(0, revealed).map((r, i) => (
             <motion.div key={i}
               initial={{ opacity: 0, x: -40, scale: 0.9 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ type: 'spring', stiffness: 200, damping: 18 }}
               className="glass"
               style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 'clamp(10px, 2vw, 13px) clamp(12px, 3vw, 18px)', willChange: 'transform' }}>

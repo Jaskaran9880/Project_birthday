@@ -8,7 +8,7 @@ function launchConfetti(canvas) {
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
   const colors = ['#a78bfa', '#06b6d4', '#8b5cf6', '#67e8f9', '#c4b5fd', '#ffffff', '#e879f9']
-  const pieces = Array.from({ length: 80 }, () => ({
+  const pieces = Array.from({ length: 50 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height - canvas.height,
     w: 7 + Math.random() * 8,
@@ -25,7 +25,7 @@ function launchConfetti(canvas) {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     pieces.forEach(p => {
       ctx.save()
-      ctx.globalAlpha = p.alpha
+      ctx.globalAlpha = 0.8
       ctx.fillStyle = p.color
       ctx.translate(p.x, p.y)
       ctx.rotate(p.r)
