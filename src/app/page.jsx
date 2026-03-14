@@ -16,6 +16,7 @@ import MusicButton from '@/components/MusicButton'
 import ReplayButton from '@/components/ReplayButton'
 import Orbs from '@/components/Orbs'
 import MusicPrompt from '@/components/MusicPrompt'
+import AuthScreen from '@/components/AuthScreen'
 
 // Screens where replay button should NOT show (too early in the flow)
 const HIDE_REPLAY = ['createdby', 'loader']
@@ -24,6 +25,7 @@ export default function Home() {
   const [screen, setScreen] = useState('createdby')
   const [showPrompt, setShowPrompt] = useState(true)
   const [playMusic, setPlayMusic] = useState(false)
+  const [overlay, setOverlay] = useState('auth')
 
   const replay = () => {
     setScreen('createdby')
@@ -34,6 +36,10 @@ export default function Home() {
     <main className="relative w-screen overflow-hidden" style={{ height: '100dvh' }}>
       <Orbs />
       <MusicButton play={playMusic} />
+      <AnimatePresence mode="wait">
+        {overlay === 'auth' && <AuthScreen key="auth" onUnlock={() => setOverlay('music')} />}
+        {overlay === 'music' && <MusicPrompt key="music" onDone={(shouldPlay) => { setShowPrompt(false); if (shouldPlay) setPlayMusic(true); setOverlay('none') }} />}
+      </AnimatePresence>
       {!HIDE_REPLAY.includes(screen) && <ReplayButton onReplay={replay} />}
 
       <AnimatePresence mode="wait">
@@ -48,7 +54,6 @@ export default function Home() {
         {screen === 'message' && <MessageScreen key="message" onNext={() => setScreen('experience')} />}
         {screen === 'experience' && <ExperienceScreen key="experience" onReplay={replay} />}
       </AnimatePresence>
-      {showPrompt && <MusicPrompt onDone={(shouldPlay) => { setShowPrompt(false); if (shouldPlay) setPlayMusic(true) }} />}
     </main>
   )
 }

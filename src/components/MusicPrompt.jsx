@@ -10,11 +10,16 @@ export default function MusicPrompt({ onDone }) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         style={{
-          position: 'fixed', inset: 0, zIndex: 9999,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          background: 'rgba(0,0,0,0.55)',
-          backdropFilter: 'blur(8px)',
+          position: 'fixed',
+          inset: 0,
+          zIndex: 9998,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           padding: 20,
+          background: 'rgba(0, 0, 0, 0.50)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
         }}
       >
         <motion.div
