@@ -86,17 +86,19 @@ export default function MessageScreen({ onNext }) {
         )}
       </AnimatePresence>
 
-      <motion.button
-        className="btn-glass"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        whileHover={{ scale: 1.05 }}
-        onClick={onNext}
-        style={{ willChange: 'transform' }}
-      >
-        Continue 💜
-      </motion.button>
+      {opened && (
+        <motion.button
+          className="btn-glass"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          whileHover={{ scale: 1.05 }}
+          onClick={onNext}
+          style={{ willChange: 'transform' }}
+        >
+          Continue 💜
+        </motion.button>
+      )}
     </motion.div>
   )
 }
