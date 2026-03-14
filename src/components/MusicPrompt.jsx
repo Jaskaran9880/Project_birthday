@@ -70,7 +70,10 @@ export default function MusicPrompt({ onDone }) {
 
           <motion.button
             whileHover={{ scale: 1.06, y: -3 }} whileTap={{ scale: 0.96 }}
-            onClick={() => onDone(true)}
+            onClick={() => {
+              window.dispatchEvent(new Event('birthday-music-play'))
+              onDone(true)
+            }}
             style={{
               marginTop: 6, width: '100%', padding: '14px 0',
               background: 'linear-gradient(135deg, rgba(139,92,246,0.75), rgba(6,182,212,0.75))',

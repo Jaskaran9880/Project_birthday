@@ -24,23 +24,21 @@ const HIDE_REPLAY = ['createdby', 'loader']
 export default function Home() {
   const [screen, setScreen] = useState('createdby')
   const [showPrompt, setShowPrompt] = useState(true)
-  const [playMusic, setPlayMusic] = useState(false)
   const [overlay, setOverlay] = useState('auth')
 
   const replay = () => {
     setScreen('createdby')
-    // Ensure music restarts even if already playing
-    setPlayMusic(false)
-    setTimeout(() => setPlayMusic(true), 0)
+    // Restart music from beginning
+    window.dispatchEvent(new Event('birthday-music-restart'))
   }
 
   return (
     <main className="relative w-screen overflow-hidden" style={{ height: '100dvh' }}>
       <Orbs />
-      <MusicButton play={playMusic} />
+      <MusicButton />
       <AnimatePresence mode="wait">
         {overlay === 'auth' && <AuthScreen key="auth" onUnlock={() => setOverlay('music')} />}
-        {overlay === 'music' && <MusicPrompt key="music" onDone={(shouldPlay) => { setShowPrompt(false); if (shouldPlay) setPlayMusic(true); setOverlay('none') }} />}
+        {overlay === 'music' && <MusicPrompt key="music" onDone={(shouldPlay) => { setShowPrompt(false); setOverlay('none') }} />}
       </AnimatePresence>
       {!HIDE_REPLAY.includes(screen) && <ReplayButton onReplay={replay} />}
 
