@@ -29,7 +29,9 @@ export default function Home() {
 
   const replay = () => {
     setScreen('createdby')
-    setPlayMusic(true)
+    // Ensure music restarts even if already playing
+    setPlayMusic(false)
+    setTimeout(() => setPlayMusic(true), 0)
   }
 
   return (

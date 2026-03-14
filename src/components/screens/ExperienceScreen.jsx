@@ -10,19 +10,23 @@ export default function ExperienceScreen({ onReplay }) {
   const [rating, setRating] = useState(0)
   const [hovered, setHovered] = useState(0)
   const [message, setMessage] = useState('')
+  const [messageTouched, setMessageTouched] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
+  const canSubmit = rating > 0 && message.trim().length > 0
+
   const handleSubmit = () => {
-    if (rating === 0) return
+    if (!canSubmit) {
+      setMessageTouched(true)
+      return
+    }
 
     // Build the WhatsApp message
     const stars = '⭐'.repeat(rating)
     const reaction = REACTIONS[rating - 1]
     let whatsappMsg = `🎂 *Birthday Experience Feedback* 🎂\n\n`
     whatsappMsg += `Rating: ${stars} (${rating}/5) ${reaction}\n`
-    if (message.trim()) {
-      whatsappMsg += `\nMessage: "${message.trim()}"\n`
-    }
+    whatsappMsg += `\nMessage: "${message.trim()}"\n`
     whatsappMsg += `\n💜 Sent from your Birthday Surprise!`
 
     // Open WhatsApp with pre-filled message
@@ -97,8 +101,11 @@ export default function ExperienceScreen({ onReplay }) {
             {/* Message box */}
             <textarea
               value={message}
-              onChange={e => setMessage(e.target.value)}
-              placeholder="Write something... (optional) 💬"
+              onChange={e => {
+                setMessage(e.target.value)
+                if (messageTouched && e.target.value.trim().length > 0) setMessageTouched(false)
+              }}
+              placeholder="Write something... 💬"
               maxLength={200}
               style={{
                 width: '100%', minHeight: 'clamp(70px, 12vh, 90px)', background: 'rgba(255,255,255,0.08)',
@@ -110,22 +117,27 @@ export default function ExperienceScreen({ onReplay }) {
             <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.72rem', alignSelf: 'flex-end', marginTop: -10 }}>
               {message.length}/200
             </p>
+            {messageTouched && message.trim().length === 0 && (
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.72rem', alignSelf: 'flex-end', marginTop: -4 }}>
+                Please write something to share 💬
+              </p>
+            )}
 
             <motion.button
-              whileHover={{ scale: rating > 0 ? 1.05 : 1 }}
-              whileTap={{ scale: rating > 0 ? 0.96 : 1 }}
+              whileHover={{ scale: canSubmit ? 1.05 : 1 }}
+              whileTap={{ scale: canSubmit ? 0.96 : 1 }}
               onClick={handleSubmit}
               style={{ willChange: 'transform',
                 padding: '12px 32px',
-                background: rating > 0
+                background: canSubmit
                   ? 'linear-gradient(135deg, rgba(139,92,246,0.65), rgba(6,182,212,0.65))'
                   : 'rgba(255,255,255,0.08)',
                 backdropFilter: 'blur(12px)',
                 border: '1px solid rgba(255,255,255,0.25)',
-                borderRadius: 50, color: rating > 0 ? 'white' : 'rgba(255,255,255,0.35)',
+                borderRadius: 50, color: canSubmit ? 'white' : 'rgba(255,255,255,0.35)',
                 fontFamily: 'Quicksand, sans-serif', fontSize: 'clamp(0.88rem, 3vw, 1rem)', fontWeight: 700,
-                cursor: rating > 0 ? 'pointer' : 'not-allowed',
-                boxShadow: rating > 0 ? '0 6px 24px rgba(139,92,246,0.35)' : 'none',
+                cursor: canSubmit ? 'pointer' : 'not-allowed',
+                boxShadow: canSubmit ? '0 6px 24px rgba(139,92,246,0.35)' : 'none',
                 transition: 'all 0.3s',
               }}>
               Share My Experience ✨
