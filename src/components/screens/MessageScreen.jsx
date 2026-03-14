@@ -39,6 +39,7 @@ export default function MessageScreen({ onNext }) {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.4, opacity: 0 }}
             onClick={() => setOpened(true)}
+            className="glass-strong"
             style={{ cursor: 'pointer', textAlign: 'center', padding: 'clamp(20px, 5vw, 32px) clamp(28px, 8vw, 48px)', willChange: 'transform' }}
           >
             <motion.div

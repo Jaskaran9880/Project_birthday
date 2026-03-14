@@ -31,7 +31,7 @@ const PHOTOS = [
   {
     image: '/new pra.webp',
     caption: 'Happy birthday to the most beautiful soul I know ✨',
-    shadow: '0 0 40px ',
+    shadow: '0 0 30px rgb(66, 168, 26)',
   },
 ]
 
