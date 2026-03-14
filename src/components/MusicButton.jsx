@@ -24,7 +24,7 @@ export default function MusicButton({ play }) {
   return (
     <>
       <audio ref={audioRef} loop>
-        <source src="/birthday_v4.mp3" type="audio/mpeg" />
+        <source src="/birthday_final_v1.mp3" type="audio/mpeg" />
       </audio>
       <motion.button
         onClick={toggle}

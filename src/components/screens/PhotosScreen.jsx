@@ -24,7 +24,7 @@ const PHOTOS = [
     shadow: '0 0 20px gold',
   },
   {
-    image: '/black_p.webp',
+    image: '/black_p.webp', 
     caption: 'Miles away but never far from my mind 💜',
     shadow: '0 0 20px gold',
   },
