@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 export default function MusicButton() {
   const [playing, setPlaying] = useState(false)
   const audioRef = useRef(null)
+  const wasPlayingRef = useRef(false)
 
   useEffect(() => {
     const playHandler = () => {
@@ -30,10 +31,43 @@ export default function MusicButton() {
     }
   }, [])
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!audioRef.current) return
+      if (document.hidden) {
+        wasPlayingRef.current = playing
+        audioRef.current.pause()
+        setPlaying(false)
+      } else {
+        if (wasPlayingRef.current) {
+          audioRef.current.play().catch(() => {})
+          setPlaying(true)
+        }
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [playing])
+
+  useEffect(() => {
+    const handleUnload = () => {
+      if (audioRef.current) audioRef.current.pause()
+    }
+    window.addEventListener('beforeunload', handleUnload)
+    return () => window.removeEventListener('beforeunload', handleUnload)
+  }, [])
+
   const toggle = () => {
     if (!audioRef.current) return
-    if (playing) { audioRef.current.pause(); setPlaying(false) }
-    else { audioRef.current.play().catch(() => { }); setPlaying(true) }
+    if (playing) {
+      audioRef.current.pause()
+      setPlaying(false)
+      wasPlayingRef.current = false
+    } else {
+      audioRef.current.play().catch(() => {})
+      setPlaying(true)
+      wasPlayingRef.current = true
+    }
   }
 
   return (
