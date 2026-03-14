@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const SECRET_CODE = 'Prachi@9121'
+const SECRET_CODE = 'Prachii@9121'
 
 export default function AuthScreen({ onUnlock }) {
   const [input, setInput] = useState('')
