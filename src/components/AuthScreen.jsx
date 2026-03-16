@@ -9,6 +9,7 @@ export default function AuthScreen({ onUnlock }) {
   const [input, setInput] = useState('')
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleSubmit = () => {
     if (input === SECRET_CODE) {
@@ -98,25 +99,48 @@ export default function AuthScreen({ onUnlock }) {
           You know the code 😉
         </p>
 
-        <input
-          type="password"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={handleKeyPress}
-          style={{
-            textAlign: 'center',
-            letterSpacing: '0.3em',
-            background: 'rgba(255,255,255,0.08)',
-            border: error ? '1px solid rgba(248,113,113,0.7)' : '1px solid rgba(255,255,255,0.2)',
-            borderRadius: 14,
-            color: 'white',
-            fontFamily: 'Quicksand',
-            padding: '12px 16px',
-            fontSize: '1rem',
-            width: '100%',
-            outline: 'none'
-          }}
-        />
+        <div style={{ position: 'relative', width: '100%' }}>
+          <input
+            type={showPassword ? "text" : "password"}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyPress={handleKeyPress}
+            style={{
+              textAlign: 'center',
+              letterSpacing: '0.3em',
+              background: 'rgba(255,255,255,0.08)',
+              border: error ? '1px solid rgba(248,113,113,0.7)' : '1px solid rgba(255,255,255,0.2)',
+              borderRadius: 14,
+              color: 'white',
+              fontFamily: 'Quicksand',
+              padding: '12px 50px 12px 16px',
+              fontSize: '1rem',
+              width: '100%',
+              outline: 'none'
+            }}
+          />
+          <button
+            onClick={() => setShowPassword(!showPassword)}
+            style={{
+              position: 'absolute',
+              right: 10,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'transparent',
+              border: 'none',
+              color: 'white',
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+              outline: 'none',
+              padding: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {showPassword ? '🙈' : '👁️'}
+          </button>
+        </div>
 
         <AnimatePresence>
           {error && (
